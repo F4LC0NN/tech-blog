@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid w-50 p-5">
+        <div class="container-fluid mb-5 p-5 d-grid gap-3 border border-2 border-dark-subtle rounded shadow">
+            <img src="{{ last_article.image_url }}" alt="{{ last_article.categories }}" class="mb-5 img-fluid rounded">
+            <h1>{{ last_article.title }}</h1>
+            <p>{{ last_article.synopsis }}</p>
+            <a href="/article/{{ last_article.pk }}"
+               class="p-3 border-0 border-dark rounded text-light text-decoration-none bg-black">I want to read!</a>
+        </div>
+        {% for latest_article in latest_articles %}
+            <div class="w-100 mb-5">
+                <h2>{{ latest_article.title }}</h2>
+                <p class="mb-5">{{ latest_article.synopsis }}</p>
+                <a href="/article/{{ latest_article.pk }}"
+                   class="p-3 border-0 border-dark rounded text-light text-decoration-none bg-black shadow">Read
+                    article</a>
+            </div>
+            <hr class="pb-5">
+        {% endfor %}
+    </div>
+{% endblock %}

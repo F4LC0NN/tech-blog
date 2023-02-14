@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Article {% endblock %}
+
+{% block content %}
+    <div style="min-height: 80vh; padding: 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3rem;">
+        <h1>Create an article</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="width: 500px; padding: 2rem;" class="mb-5 border border-1 border-dark-subtle rounded-2 shadow">
+                {% for field in form %}
+                    <p style="display: grid;">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    </p>
+                {% endfor %}
+            </div>
+            <div style="display: grid">
+                <input type="submit" value="Create book"
+                       class="p-4 fw-bold text-light border border-0 rounded-2 bg-black shadow">
+            </div>
+        </form>
+    </div>
+{% endblock %}
